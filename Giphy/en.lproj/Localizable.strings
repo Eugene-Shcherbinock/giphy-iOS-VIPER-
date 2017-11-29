@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Giphy
+
+  Created by Eugene Shcherbinock on 11/26/17.
+  Copyright © 2017 Eugene Shcherbinock. All rights reserved.
+*/
+
+"AlertController.Title" = "Error";
+
+"GifsViewController.SearchBar.Placeholder" = "Search";
+"GifsViewController.RefreshControl.Title" = "Updating...";
+"GifsViewController.NoContentLabel.Text" = "No content available";
+
+"GifDetailsViewController.Title" = "Gif Details";

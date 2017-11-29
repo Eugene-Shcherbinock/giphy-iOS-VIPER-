@@ -6,5 +6,10 @@ target 'Giphy' do
   use_frameworks!
 
   # Pods for Giphy
+  
+  pod 'ObjectMapper', :git => 'https://github.com/Hearst-DD/ObjectMapper.git', :branch => 'swift-4'
+  pod 'Alamofire', '~> 4.5'
+  pod 'MBProgressHUD', '~> 1.1.0'
+  pod 'FLAnimatedImage', '~> 1.0'
 
 end

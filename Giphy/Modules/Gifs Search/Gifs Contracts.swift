@@ -7,50 +7,73 @@
 //
 
 import UIKit
+import FLAnimatedImage
 
-protocol GifsViewInput: class {
+struct GifsFetchRequest {
+    var query: String
+    var limit: Int
+    var offset: Int
+    var endpoint: GifsSourceEndpoint
+}
+
+protocol GifsViewInput: BaseViewInput {
     
+    var dataManager: GifsDataManagerProtocol! { get set }
     var presenter: GifsViewOutput! { get set }
     
     func show(gifs: [Gif])
+    func showMore(gifs: [Gif])
+    
+    func register3DTouchInteractions()
     
 }
 
-protocol GifsViewOutput: GifsInteractorOutput {
+protocol GifsViewOutput: BaseViewOutput, GifsInteractorOutput {
     
-    weak var view: GifsViewInput! { get set }
+    var view: GifsViewInput! { get set }
     var interactor: GifsInteractorInput! { get set }
     var router: GifsRouterProtocol! { get set }
     
-    func viewDidLoad()
+    func reloadData()
+    func didScrolledToBottom()
     
-    func didChangedQuery(in searchBar: UISearchBar)
     func didChangedScope(in searchBar: UISearchBar)
+    func didCancelButtonTapped(in searchBar: UISearchBar)
     func didSearchButtonTapped(in searchBar: UISearchBar)
     
-    func configure(cell: UICollectionViewCell, at indexPath: IndexPath)
-    func didSelect(gif: Gif, at indexPath: IndexPath)
+    func didSelect(gif: Gif, image: FLAnimatedImage?)
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController?
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
     
 }
 
-protocol GifsInteractorInput: class {
+protocol GifsInteractorInput: BaseInteractorInput {
     
-    weak var output: GifsInteractorOutput! { get set }
-    var dataSource: GifsDataSource! { get set }
+    weak var output: GifsInteractorOutput? { get set }
+    var gifsService: GifsServiceProtocol! { get set }
     
-    func fetchGifsWith(query: String, limit: Int, offset: Int)
+    var isFetchingNow: Bool { get }
+    
+    func fetchGifs(with request: GifsFetchRequest)
     
 }
 
-protocol GifsInteractorOutput: class {
+protocol GifsInteractorOutput: BaseInteractorOutput {
     
     func didFetched(gifs: [Gif])
-    func didFailed(error: Error)
+    func didFetchedMore(gifs: [Gif])
+    func didFailed(error: APIError)
     
 }
 
-protocol GifsRouterProtocol: class {
+protocol GifsRouterProtocol: BaseRouter {
     
-    func showDetails(for gif: Gif)
+    weak var navigationController: UINavigationController? { get set }
+    var gifsViewController: UIViewController! { get set }
+    
+    func showDetails(for gif: Gif, downloadedImage: FLAnimatedImage?)
+    func prepareDetails(for gif: Gif, downloadedImage: FLAnimatedImage?) -> UIViewController
+    func commit(viewController: UIViewController)
     
 }
