@@ -20,13 +20,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFR-7h-CQ5">
-                                <rect key="frame" x="0.0" y="20" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="sFR-7h-CQ5" firstAttribute="top" secondItem="aXc-Zl-De2" secondAttribute="topMargin" id="CGQ-1l-p9C"/>
+                            <constraint firstItem="sFR-7h-CQ5" firstAttribute="top" secondItem="aXc-Zl-De2" secondAttribute="top" id="CGQ-1l-p9C"/>
                             <constraint firstAttribute="bottomMargin" secondItem="sFR-7h-CQ5" secondAttribute="bottom" id="PYe-yo-7BD"/>
                             <constraint firstItem="sFR-7h-CQ5" firstAttribute="trailing" secondItem="Cct-E3-dRo" secondAttribute="trailing" id="SGT-PZ-SyD"/>
                             <constraint firstItem="sFR-7h-CQ5" firstAttribute="leading" secondItem="Cct-E3-dRo" secondAttribute="leading" id="v9Y-RU-a5d"/>

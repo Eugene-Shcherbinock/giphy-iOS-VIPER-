@@ -21,6 +21,7 @@ class GifDetailsPresenter: GifDetailsViewOutput {
     
     // MARK: - Private Properties
     
+    private var fullSizedImage: FLAnimatedImage?
     private var originalViewPosition: CGPoint!
     
     // MARK: - GifDetailsViewOutput
@@ -60,7 +61,17 @@ class GifDetailsPresenter: GifDetailsViewOutput {
     }
     
     func didActionButtonTapped(_ sender: UIBarButtonItem) {
+        guard let downsampledImage = downloadedImage else {
+            return
+        }
         
+        var exludedItems: [UIActivityType] = [.openInIBooks, .addToReadingList]
+        if #available(iOS 11.0, *) {
+            exludedItems.append(.markupAsPDF)
+        }
+        
+        let sharingGifData = (fullSizedImage ?? downsampledImage).data!
+        view.showActivityController(for: [sharingGifData], excludedItems: exludedItems)
     }
     
 }
@@ -71,6 +82,7 @@ extension GifDetailsPresenter {
     
     private func loadOriginalSizedGif() {
         FLAnimatedImage.load(from: selectedGif.images?.original?.url) { [weak self] (image) in
+            self?.fullSizedImage = image
             guard let image = image else {
                 return
             }

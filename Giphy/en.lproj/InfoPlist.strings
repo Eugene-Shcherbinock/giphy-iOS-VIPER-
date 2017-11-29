@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Giphy
+
+  Created by Eugene Shcherbinock on 11/29/17.
+  Copyright © 2017 Eugene Shcherbinock. All rights reserved.
+*/
+
+"NSPhotoLibraryAddUsageDescription" = "Used to save images into your Library";
+"NSPhotoLibraryUsageDescription" = "Used to save images into your Library";

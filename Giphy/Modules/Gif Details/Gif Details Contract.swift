@@ -15,6 +15,7 @@ protocol GifDetailsViewInput: BaseViewInput {
     
     func showDownloadedImage(_ image: FLAnimatedImage?)
     func showOriginalImage(_ image: FLAnimatedImage)
+    func showActivityController(for sharingData: [Any], excludedItems: [UIActivityType])
     
 }
 

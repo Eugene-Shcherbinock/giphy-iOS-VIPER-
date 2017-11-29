@@ -70,6 +70,12 @@ extension GifDetailsViewController: GifDetailsViewInput {
         gifImageView.animatedImage = image
     }
     
+    func showActivityController(for sharingData: [Any], excludedItems: [UIActivityType]) {
+        let activityController = UIActivityViewController(activityItems: sharingData, applicationActivities: nil)
+        activityController.excludedActivityTypes = excludedItems
+        present(activityController, animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - Private
