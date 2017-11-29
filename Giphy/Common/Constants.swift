@@ -11,6 +11,6 @@ import Foundation
 struct APISettings {
     
     static let apiURL = "https://api.giphy.com/v1"
-    static let apiKey = PropertyListLoader.load()["API Key"] as! String
+    static let apiKey = "jLYH1Ay3IWIBvaFwK7mQKw6Y6THTqMr8"
  
 }

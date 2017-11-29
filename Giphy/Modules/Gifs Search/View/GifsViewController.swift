@@ -24,6 +24,8 @@ class GifsViewController: UIViewController {
     }
     var presenter: GifsViewOutput!
     
+    // MARK: - Private Properties
+    
     private lazy var searchBar: UISearchBar = {
         let search = UISearchBar()
         search.delegate = self
@@ -72,10 +74,6 @@ extension GifsViewController: GifsViewInput {
         dataManager.appendNew(gifs: gifs)
     }
     
-    func register3DTouchInteractions() {
-        registerForPreviewing(with: self, sourceView: view)
-    }
-    
 }
 
 // MARK: - UIRefreshControll
@@ -91,10 +89,6 @@ extension GifsViewController {
 // MARK: - UISearchBarDelegate
 
 extension GifsViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        presenter.didChangedScope(in: searchBar)
-    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         presenter.didCancelButtonTapped(in: searchBar)

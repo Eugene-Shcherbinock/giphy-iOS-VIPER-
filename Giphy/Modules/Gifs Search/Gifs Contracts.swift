@@ -24,8 +24,6 @@ protocol GifsViewInput: BaseViewInput {
     func show(gifs: [Gif])
     func showMore(gifs: [Gif])
     
-    func register3DTouchInteractions()
-    
 }
 
 protocol GifsViewOutput: BaseViewOutput, GifsInteractorOutput {
@@ -37,7 +35,6 @@ protocol GifsViewOutput: BaseViewOutput, GifsInteractorOutput {
     func reloadData()
     func didScrolledToBottom()
     
-    func didChangedScope(in searchBar: UISearchBar)
     func didCancelButtonTapped(in searchBar: UISearchBar)
     func didSearchButtonTapped(in searchBar: UISearchBar)
     

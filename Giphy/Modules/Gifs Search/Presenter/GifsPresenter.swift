@@ -47,11 +47,7 @@ class GifsPresenter: GifsViewOutput {
         view.showLoading(true)
         fetchGifs(with: query)
     }
-    
-    func didChangedScope(in searchBar: UISearchBar) {
-        
-    }
-    
+
     func didCancelButtonTapped(in searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
@@ -128,10 +124,11 @@ extension GifsPresenter {
     }
     
     private func tryToRegisterFor3DTouchInteractions() {
-        guard is3DTouchAvailable() else {
+        let viewController = router.gifsViewController
+        guard is3DTouchAvailable(), let previewingDelegate = viewController as? UIViewControllerPreviewingDelegate else {
             return
         }
-        view.register3DTouchInteractions()
+        viewController!.registerForPreviewing(with: previewingDelegate, sourceView: viewController!.view)
     }
     
 }
